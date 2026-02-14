@@ -1,25 +1,48 @@
-# lost-and-found
+# Lost and Found Management System (Python Backend)
 
-# database
-there are two tables user and items 
+A backend-based Lost & Found Management System where users can register, login, report lost or found items, and search for matching items.  
+The system stores item details in a database and helps users find lost items efficiently.
 
--> TABLE 1: USERS
+---
 
-Columns:
+## Features
+- User Registration
+- User Login
+- Report Lost Item
+- Report Found Item
+- View Lost Items
+- View Found Items
+- Search Items by Category and Location
+- View Item Details with Contact Information
 
-user_id (Primary Key)
+---
 
-name
+## Tech Stack
+- Python (Backend)
+- SQL
+- MySQL Database
 
-email (Unique)
+---
 
-password
+## Database Design
 
-phone
+The project uses two tables: `users` and `items`.
 
-created_at
+---
 
-sql query "CREATE TABLE users (
+### Table 1: Users
+
+**Columns**
+- `user_id` (Primary Key)
+- `name`
+- `email` (Unique)
+- `password`
+- `phone`
+- `created_at`
+
+**SQL Query**
+```sql
+CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
@@ -27,29 +50,22 @@ sql query "CREATE TABLE users (
     phone VARCHAR(15),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-"
 
--> TABLE 2 : ITEMS (MAIN TABLE)
+### Table 2: Items(Main table)
 
-Columns:
+**Columns**
 
-item_id (Primary Key)
+- `item_id` (Primary Key)
+- `item_name`
+- `category`  (wallet, phone, bag)
+- `description`
+- `location`
+- `date_reported`
+- `status`  (Lost / Found)
+- `contact_number`
 
-item_name
-
-category (wallet, phone, bag)
-
-description
-
-location
-
-date_reported
-
-status (Lost / Found)
-
-contact_number
-
-user_id (Foreign Key from users table)
+**SQL Query**
+```sql
 "CREATE TABLE items (
     item_id INT PRIMARY KEY AUTO_INCREMENT,
     item_name VARCHAR(100) NOT NULL,
